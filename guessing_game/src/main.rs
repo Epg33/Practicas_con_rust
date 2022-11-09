@@ -12,6 +12,9 @@ fn main() {
         .expect("Failed to read the line");
 
     println!("You guessed: {guess}");
+    random();
 }
 
-
+fn random()->u32 {
+    return 8
+}
