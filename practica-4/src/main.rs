@@ -21,4 +21,28 @@ fn main() {
     for i in nums {
         println!("{i}");
     }
+
+    let bind = {
+        let y:i32 = 5;
+        y*y
+    };
+    println!("{bind}");
+
+    let add = adding(10, 10);
+
+    println!("{add}");
+
+    looping();
+}
+
+fn adding(num1:u32, num2:u32)->u32 {
+    let result:u32 = num1+ num2;
+    return result;
+}
+
+fn looping() {
+    for number in (1..50).rev(){
+        println!("{number}");
+    }
+    println!("ya");
 }
