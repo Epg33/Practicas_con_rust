@@ -7,7 +7,11 @@ fn main() {
 
     let secret_number: u32 = rand::thread_rng().gen_range(1..=100);
 
+    let mut tries:u32 = 0;
+    let mut tris_left:u32 = 5;
+
     loop {
+        println!("You have {5-tries} tries left");
         println!("please input your guess.");
 
         let mut guess: String = String::new();
@@ -31,5 +35,7 @@ fn main() {
                 break;
             }
         }
+
+
     }
 }
