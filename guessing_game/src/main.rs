@@ -8,10 +8,14 @@ fn main() {
     let secret_number: u32 = rand::thread_rng().gen_range(1..=100);
 
     let mut tries:u32 = 0;
-    let mut tris_left:u32 = 5;
 
     loop {
-        println!("You have {5-tries} tries left");
+        let tries_left:u32 = 5-tries;
+        if tries_left==0{
+            println!("you have no more tries left");
+            break;
+        };
+        println!("You have {tries_left} tries left");
         println!("please input your guess.");
 
         let mut guess: String = String::new();
@@ -36,6 +40,6 @@ fn main() {
             }
         }
 
-
+        tries+=1;
     }
 }
