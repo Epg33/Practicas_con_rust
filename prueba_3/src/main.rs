@@ -1,9 +1,5 @@
 fn main() {
-    makeLoop()
-}
-
-fn makeLoop() {
-    loop {
-        println!("Hello, world!");
-    }
+    let mut s:String = String::from("Hello");
+    s.push_str(", World");
+    println!("{}", s);
 }
