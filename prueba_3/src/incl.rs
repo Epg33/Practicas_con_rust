@@ -9,5 +9,14 @@ pub fn scope() {
     let s1 = String::from("hello");
     let s2 = s1;
 
-    println!("{s1}, World!");
+    println!("{s2}, World!");
+
+    another_scope();
+}
+
+pub fn another_scope() {
+    let s1 = String::from("hello");
+    let s2 = s1.clone();
+
+    println!("s1 = {s1}, s2 = {s2}");
 }
