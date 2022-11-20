@@ -1,7 +1,8 @@
 mod incl;
+mod slices;
 
 fn main() {
-    let mut s:String = String::from("Hello");
+    let mut s: String = String::from("Hello");
     s.push_str(", World");
     println!("{}", s);
     incl::printing();
@@ -15,12 +16,16 @@ fn main() {
     makes_copy(x);
     // println!("{x}");
 
+    incl::lengths();
+    incl::to_change();
+
+    slices::hello();
 }
 
-fn takes_ownership(sm_str:String) {
+fn takes_ownership(sm_str: String) {
     println!("{sm_str}");
 }
 
-fn makes_copy (sm_int:i32) {
+fn makes_copy(sm_int: i32) {
     println!("{sm_int}");
 }
