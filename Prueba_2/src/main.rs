@@ -41,7 +41,7 @@ fn try_enums () {
     struct KeyPress (String, char);
 
     #[derive(Debug)]
-    struct MouseClick {x: i64, y: i64}
+    struct MouseClick {x: i64, y:i64}
 
     let click: MouseClick = MouseClick { x: 10, y: 20 };
     let keys= KeyPress(String::from("Control+"), 'N');

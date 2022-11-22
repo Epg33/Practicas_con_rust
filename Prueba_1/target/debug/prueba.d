@@ -1,1 +1,1 @@
-C:\Users\adsi\Desktop\rust\Prueba_1\target\debug\prueba.exe: C:\Users\adsi\Desktop\rust\Prueba_1\src\main.rs
+C:\Users\HP\Desktop\rust\Practicas_con_rust\Prueba_1\target\debug\prueba.exe: C:\Users\HP\Desktop\rust\Practicas_con_rust\Prueba_1\src\main.rs
