@@ -4,21 +4,18 @@ mod operations;
 fn main() {
     println!("Please input the numbers you want");
     println!("first");
-    let mut str1:String = String::new();
+    let mut str1:String = String::new().to_string();
     io::stdin()
         .read_line(&mut str1)
         .expect("insert a valid number");
-    let inp_num1 = str1.parse::<i32>().unwrap();
-    // inp_num1 = FromStr::from_str(str1).unwrap();
-    // inp_num1= str1.parse::<i32>().unwrap();
+    let inp_num1:i32= str1.trim().parse::<i32>().unwrap();
 
     println!("second");
-    let mut inp_num2:i32 = 0;
     let mut str1:String =String::new();
     io::stdin()
         .read_line(&mut str1)
         .expect("insert a valid number");
-    inp_num2 = str1.parse::<i32>().unwrap();
+    let inp_num2:i32 = str1.trim().parse::<i32>().unwrap();
 
     println!("please input the sign of the operation you want: +, -, /, *");
     let mut desicion:String = String::new();
@@ -32,12 +29,12 @@ fn main() {
 
 fn options(opt: &str, num1:i32, num2:i32) -> i32 {
     let mut result: i32 = 0;
-    match opt {
+    match opt.trim() {
         "+" => result = operations::adding(num1, num2),
         "-" => result = operations::substrackting(num1, num2),
         "*" => result = operations::multipliying(num1, num2),
         "/" => result = operations::dividing(num1, num2),
-        &_ => println!("insert a valid operation"),
+        _ => println!("insert a valid operation"),
     };
     return result;
 }
