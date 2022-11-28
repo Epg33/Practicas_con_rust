@@ -1,3 +1,5 @@
+mod slices;
+
 fn main() {
     let x:i32 = 5;
 
@@ -10,8 +12,8 @@ fn main() {
 
     println!("The value of x in this scope is {x}");
 
-    let spaces = "    ";
-    let spaces = spaces.len();
+    let spaces:&str = "    ";
+    let spaces:usize = spaces.len();
     println!("{spaces}");
 
     const TUP: (i32, f64, u8) = (500, 6.4, 1);
@@ -22,17 +24,21 @@ fn main() {
         println!("{i}");
     }
 
-    let bind = {
+    let bind:i32 = {
         let y:i32 = 5;
         y*y
     };
     println!("{bind}");
 
-    let add = adding(10, 10);
+    let add:u32 = adding(10, 10);
 
     println!("{add}");
 
     looping();
+
+    let mut s:String = String::from("Hello World");
+    let word:&str= slices::first_word(&s);
+    s.clear();
 }
 
 fn adding(num1:u32, num2:u32)->u32 {
