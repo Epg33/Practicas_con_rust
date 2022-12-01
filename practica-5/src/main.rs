@@ -47,8 +47,9 @@ fn main() {
 
     let heigth:i32 = rec.trim().parse::<i32>().unwrap();
     let rectagle:Rectangle= Rectangle { width, heigth };
-    let area = area_rectangle(&rectagle);
-    println!("the rectangle is {:?}, and it's area is {}", rectagle, area);
+    println!("the rectangle is {:?}, and it's area is {}", rectagle, rectagle.area_rectangle());
+    let rectangle2:Rectangle = Rectangle { width: 50, heigth: 50 };
+    println!("can recatngle 1 fit a 50 x 50 rectangle: {}", rectagle.can_hold(&rectangle2))
 }
 
 fn build_user(email:String, user_name:String)->User{
@@ -60,8 +61,14 @@ fn build_user(email:String, user_name:String)->User{
     };
     return  user;
 }
+impl Rectangle {
+    fn area_rectangle(&self)->i32{
+        self.heigth*self.width
+    }    
 
-fn area_rectangle(rectangle:&Rectangle)->i32{
-    let area = rectangle.heigth*rectangle.width;
-    return area;
+    fn can_hold(&self, other: &Rectangle)->bool {
+        self.width>other.width && self.heigth > other.heigth
+    }
 }
+
+
