@@ -1,3 +1,11 @@
+use std::io;
+
+#[derive(Debug)]
+struct Rectangle{
+    width:i32,
+    heigth:i32
+}
+
 struct User {
     active: bool,
     user_name: String,
@@ -18,6 +26,29 @@ fn main() {
         email: String::from("b@gmail.com"),
         ..user1
     };
+
+    println!("please input the width and the heigth of the rectangle");
+    println!("width: ");
+    let mut rec:String =String::new().to_string();
+
+    io::stdin()
+        .read_line(&mut rec)
+        .expect("insert a valid number");
+
+    let width:i32 = rec.trim().parse::<i32>().unwrap();
+
+    println!("heigth: ");
+
+    let mut rec:String =String::new().to_string();
+
+    io::stdin()
+        .read_line(&mut rec)
+        .expect("insert a valid number");
+
+    let heigth:i32 = rec.trim().parse::<i32>().unwrap();
+    let rectagle:Rectangle= Rectangle { width, heigth };
+    let area = area_rectangle(&rectagle);
+    println!("the rectangle is {:?}, and it's area is {}", rectagle, area);
 }
 
 fn build_user(email:String, user_name:String)->User{
@@ -28,4 +59,9 @@ fn build_user(email:String, user_name:String)->User{
         id: 1234
     };
     return  user;
+}
+
+fn area_rectangle(rectangle:&Rectangle)->i32{
+    let area = rectangle.heigth*rectangle.width;
+    return area;
 }
