@@ -36,4 +36,35 @@ fn main() {
 
     // let random_num = rand::thread_rng().gen_range(1..101);
     // println!("Random: {random_num}");
+
+    // let age:i32 = 8;
+    // if(age>=1) && (age<=18){
+    //     println!("Important Birthday");
+    // } else if (age==21) || (age==50) {
+    //     println!("yes");
+    // } else if age>=65 {
+    //     println!("no")
+    // } else {
+    //     println!("maybe")
+    // }
+
+    // let mut my_age = 47;
+    // let can_vote = if my_age>=18 {true} else {false};
+    // println!("Can vote?: {can_vote}")
+
+    // let age2 = 8;
+    // match age2 {
+    //     1..=18 => println!("Important Birthday"),
+    //     21 | 50 => println!("yes"),
+    //     65..=i32::MAX => println!("NO"),
+    //     _ => println!("Maybe")
+    // }
+
+    let my_age = 18;
+    let voting_age = 18;
+    match my_age.cmp(&voting_age) {
+        Ordering::Less => println!("Cant Vote"),
+        Ordering::Greater => println!("Can Vote"),
+        Ordering::Equal => println!("Now You Cant Vote"),
+    }
 }
