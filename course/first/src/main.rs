@@ -1,7 +1,7 @@
 #![allow(unused)]
 
 use core::num;
-use std::io;
+use std::{io, vec};
 use rand::Rng;
 use std::io::{Write, BufReader, ErrorKind};
 use std::fs::File;
@@ -106,20 +106,79 @@ fn main() {
     // let st2 = st1.replace("A", "another");
     // println!("{st2}");
 
-    let st3 = String::from("x r t b h k k a m c");
-    let mut v1:Vec<char> = st3.chars().collect();
-    v1.sort();
-    v1.dedup();
-    for char in v1 {
-        println!("{char}");
-    }
+    // let st3 = String::from("x r t b h k k a m c");
+    // let mut v1:Vec<char> = st3.chars().collect();
+    // v1.sort();
+    // v1.dedup();
+    // for char in v1 {
+    //     println!("{char}");
+    // }
 
-    let st4: &str = "Random string";
-    let mut st5: String = st4.to_string();
-    println!("{st5}");
-    let byte_arr1 = st5.as_bytes();
-    let st6 = &st5[0..6];
-    println!("{st6}");
-    println!("String length: {}", st6.len());
-    st5.clear();
+    // let st4: &str = "Random string";
+    // let mut st5: String = st4.to_string();
+    // println!("{st5}");
+    // let byte_arr1 = st5.as_bytes();
+    // let st6 = &st5[0..6];
+    // println!("{st6}");
+    // println!("String length: {}", st6.len());
+    // st5.clear();
+    // let st6 = String::from("Just Some");
+    // let st7 = String::from(" words");
+    // let st8 = st6 + & st7;
+    // for char in st8.bytes() {
+    //     println!("{char}");
+    // }
+
+    // let int_u8:u8 = 5;
+    // let int2_u8:u8 = 4;
+    // let int_u32:u32 = (int_u8 as u32) + (int2_u8 as u32);
+
+    // enum Day {
+    //     Monday,
+    //     Tuesday,
+    //     Wednesday,
+    //     Thursday,
+    //     Friday,
+    //     Saturday,
+    //     Sunday
+    // }
+
+    // impl Day {
+    //     fn is_weekend(&self) -> bool {
+    //         match self {
+    //             Day::Saturday | Day::Sunday => true,
+    //             _ => false 
+    //         }
+    //     }
+    // }
+
+    // let today:Day = Day::Monday;
+    // match today {
+    //     Day::Monday => println!("Fuck monday"),
+    //     Day::Tuesday => println!("Fuck Tuesday"),
+    //     Day::Wednesday => println!("Fuck Wednesday"),
+    //     Day::Thursday => println!("Fuck Thursday"),
+    //     Day::Friday => println!("Fuck Friday"),
+    //     Day::Saturday => println!("Fuck Saturday"),
+    //     Day::Sunday => println!("Fuck Sunday"),
+    // }
+    // println!("Is today the weekend?: {}", today.is_weekend());
+
+    let vec1:Vec<i32> = Vec::new();
+    let mut vec2 = vec![1, 2, 3, 4];
+    vec2.push(5);
+    println!("1st {}", vec2[0]);
+    let second: &i32 = &vec2[1];
+    match vec2.get(1) {
+       Some(second) => println!("2nd: {}", second),
+       None => println!("No second value") 
+    };
+    for i in &mut vec2 {
+        *i *= 2;
+    }
+    for i in &vec2 {
+        println!("{i}")
+    }
+    println!("Vector length {}", vec2.len());
+    println!("Pop: {:?}", vec2.pop());
 }
