@@ -6,6 +6,7 @@ use rand::Rng;
 use std::io::{Write, BufReader, ErrorKind};
 use std::fs::File;
 use std::cmp::Ordering;
+use std::collections::HashMap;
 
 fn main() {
     // println!("what is your name?");
@@ -188,27 +189,43 @@ fn main() {
     // println!("Sum of list = {}", sum_list(&num_list));
 
     // println!("5 + 4 = {}", get_sum_gen(5, 4))
-    let str1 = String::from("Word");
-    let str2 = str1.clone();
-    print_str(str1);
-    let mut str3 = String::from("Alex");
-    change_str(&mut str3);
+    // let str1 = String::from("Word");
+    // let str2 = str1.clone();
+    // print_str(str1);
+    // let mut str3 = String::from("Alex");
+    // change_str(&mut str3);
+    
+    let mut heroes = HashMap::new();
+    heroes.insert("Superman", "Clark Kent");
+    heroes.insert("Batman", "Bruce Wayne");
+    heroes.insert("Flash", "Barry Allen");
+    for (k, v) in heroes.iter() {
+        println!("{k} = {v}");
+    }
 
+    println!("{}", heroes.len());
+    if heroes.contains_key(&"Batman") {
+        let the_batman = heroes.get(&"Batman");
+        match the_batman {
+            Some(x) => println!("I am Batman"),
+            None => println!("Who?")
+        }
+    }
 }
 
-fn print_str(x:String) {
-    println!("A string {x}");
-}
+// fn print_str(x:String) {
+//     println!("A string {x}");
+// }
 
-fn print_return_str(x:String) -> String {
-    println!("A string {x}");
-    x
-}
+// fn print_return_str(x:String) -> String {
+//     println!("A string {x}");
+//     x
+// }
 
-fn change_str(name:&mut String) {
-    name.push_str(" Is Happy");
-    println!("Mesagge: {name}");
-}
+// fn change_str(name:&mut String) {
+//     name.push_str(" Is Happy");
+//     println!("Mesagge: {name}");
+// }
 
 // use std::ops::Add;
 
