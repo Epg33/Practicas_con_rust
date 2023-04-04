@@ -164,21 +164,69 @@ fn main() {
     // }
     // println!("Is today the weekend?: {}", today.is_weekend());
 
-    let vec1:Vec<i32> = Vec::new();
-    let mut vec2 = vec![1, 2, 3, 4];
-    vec2.push(5);
-    println!("1st {}", vec2[0]);
-    let second: &i32 = &vec2[1];
-    match vec2.get(1) {
-       Some(second) => println!("2nd: {}", second),
-       None => println!("No second value") 
-    };
-    for i in &mut vec2 {
-        *i *= 2;
-    }
-    for i in &vec2 {
-        println!("{i}")
-    }
-    println!("Vector length {}", vec2.len());
-    println!("Pop: {:?}", vec2.pop());
+    // let vec1:Vec<i32> = Vec::new();
+    // let mut vec2 = vec![1, 2, 3, 4];
+    // vec2.push(5);
+    // println!("1st {}", vec2[0]);
+    // let second: &i32 = &vec2[1];
+    // match vec2.get(1) {
+    //    Some(second) => println!("2nd: {}", second),
+    //    None => println!("No second value") 
+    // };
+    // for i in &mut vec2 {
+    //     *i *= 2;
+    // }
+    // for i in &vec2 {
+    //     println!("{i}")
+    // }
+    // println!("Vector length {}", vec2.len());
+    // println!("Pop: {:?}", vec2.pop());
+    // println!("{}", get_some(5, 10));
+    // let (val1, val2) = get2(10);
+    // println!("Nums: {val1} {val2}");
+    // let num_list = vec![1, 2, 3, 4, 5];
+    // println!("Sum of list = {}", sum_list(&num_list));
+
+    // println!("5 + 4 = {}", get_sum_gen(5, 4))
+    let str1 = String::from("Word");
+    let str2 = str1.clone();
+    print_str(str1);
+    let mut str3 = String::from("Alex");
+    change_str(&mut str3);
+
 }
+
+fn print_str(x:String) {
+    println!("A string {x}");
+}
+
+fn print_return_str(x:String) -> String {
+    println!("A string {x}");
+    x
+}
+
+fn change_str(name:&mut String) {
+    name.push_str(" Is Happy");
+    println!("Mesagge: {name}");
+}
+
+// use std::ops::Add;
+
+// fn get_sum_gen<T:Add<Output = T>>(x: T, y: T) -> T {
+//     return x + y;
+// }
+
+// fn sum_list (list: &[i32]) -> i32 {
+//     let mut sum = 0;
+//     for &val in list.iter() {
+//         sum += &val;
+//     }
+//     sum
+// }
+
+// fn get2 (x:i32) -> (i32, i32) {
+//     return (x+1, x+2);
+// }
+// fn get_some(x:i32, y:i32) -> i32 {
+//     return x + y;
+// }
