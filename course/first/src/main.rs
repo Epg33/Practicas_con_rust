@@ -195,20 +195,66 @@ fn main() {
     // let mut str3 = String::from("Alex");
     // change_str(&mut str3);
     
-    let mut heroes = HashMap::new();
-    heroes.insert("Superman", "Clark Kent");
-    heroes.insert("Batman", "Bruce Wayne");
-    heroes.insert("Flash", "Barry Allen");
-    for (k, v) in heroes.iter() {
-        println!("{k} = {v}");
-    }
+    // let mut heroes = HashMap::new();
+    // heroes.insert("Superman", "Clark Kent");
+    // heroes.insert("Batman", "Bruce Wayne");
+    // heroes.insert("Flash", "Barry Allen");
+    // for (k, v) in heroes.iter() {
+    //     println!("{k} = {v}");
+    // }
 
-    println!("{}", heroes.len());
-    if heroes.contains_key(&"Batman") {
-        let the_batman = heroes.get(&"Batman");
-        match the_batman {
-            Some(x) => println!("I am Batman"),
-            None => println!("Who?")
+    // println!("{}", heroes.len());
+    // if heroes.contains_key(&"Batman") {
+    //     let the_batman = heroes.get(&"Batman");
+    //     match the_batman {
+    //         Some(x) => println!("I am Batman"),
+    //         None => println!("Who?")
+    //     }
+    // }
+
+    // struct Customer {
+    //     name: String,
+    //     addres: String,
+    //     balance: f32
+    // }
+    // let mut bob = Customer{
+    //     name: String::from("Bob"),
+    //     addres: String::from("555 main st"),
+    //     balance: 234.50
+    // };
+    // bob.addres = String::from("505 Main st")
+
+    struct Rectangle<T, U> {
+        length: T,
+        height: U
+    };
+    let rec = Rectangle{length: 4, height:10.5};
+    trait Shape {
+        fn new(length: f32, width: f32) -> Self;
+        fn area(&self) -> f32;
+    };
+    struct Rectangle2 {
+        length: f32,
+        width: f32
+    };
+    struct Circle {
+        length: f32,
+        width: f32
+    };
+    impl Shape for Rectangle2 {
+        fn new(length: f32, width: f32) -> Rectangle2 {
+            return Rectangle2{length, width};
+        }
+        fn area(&self) -> f32 {
+            return self.length * self.width;
+        }
+    }
+    impl Shape for Circle {
+        fn new(length: f32, width: f32) -> Circle {
+            return Circle{length, width};
+        }
+        fn area(&self) -> f32 {
+            return self.length * self.width;
         }
     }
 }
