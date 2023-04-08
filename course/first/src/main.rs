@@ -3,11 +3,16 @@
 use core::num;
 use std::fmt::write;
 use std::{io, vec};
-use rand::Rng;
+use rand::{Rng, thread_rng};
 use std::io::{Write, BufReader, ErrorKind, BufRead};
 use std::fs::File;
 use std::cmp::Ordering;
 use std::collections::HashMap;
+use std::thread;
+use std::time::Duration;
+use std::rc::Rc;
+use std::cell::RefCell;
+use std::sync::{Arc, Mutex};
 
 //mod restaurant;
 //use crate::restaurant::order_food;
@@ -79,27 +84,82 @@ fn main() {
     // BOX smart pointer
     // let b_int1 = Box::new(10);
     // println!("b_int1 = {b_int1}");
-    #[derive(Debug)]
-    struct TreeNode<T> {
-        pub left: Option<Box<TreeNode<T>>>, 
-        pub right: Option<Box<TreeNode<T>>>, 
-        pub key: T
-    }
-    impl<T> TreeNode<T> {
-        pub fn new(key: T) -> Self {
-            TreeNode { left: None, right: None, key }
-        }
-        pub fn left(mut self, node: TreeNode<T>) -> Self {
-            self.left = Some(Box::new(node));
-            self
-        }
-        pub fn right(mut self, node: TreeNode<T>) -> Self {
-            self.right = Some(Box::new(node));
-            self
-        }
-    }
+    // #[derive(Debug)]
+    // struct TreeNode<T> {
+    //     pub left: Option<Box<TreeNode<T>>>, 
+    //     pub right: Option<Box<TreeNode<T>>>, 
+    //     pub key: T
+    // }
+    // impl<T> TreeNode<T> {
+    //     pub fn new(key: T) -> Self {
+    //         TreeNode { left: None, right: None, key }
+    //     }
+    //     pub fn left(mut self, node: TreeNode<T>) -> Self {
+    //         self.left = Some(Box::new(node));
+    //         self
+    //     }
+    //     pub fn right(mut self, node: TreeNode<T>) -> Self {
+    //         self.right = Some(Box::new(node));
+    //         self
+    //     }
+    // }
 
-    let node1 = TreeNode::new(1).left(TreeNode::new(2)).right(TreeNode::new(3));
-    println!("{:?}", node1);
+    // let node1 = TreeNode::new(1).left(TreeNode::new(2)).right(TreeNode::new(3));
+    // println!("{:?}", node1);
 
+    // let thread1 = thread::spawn(|| {
+    //     for i in 1..25 {
+    //         println!("Spawned thread: {}", i);
+    //         thread::sleep(Duration::from_millis(1));
+    //     }
+    // });
+
+    // for i in 1..20 {
+    //     println!("Main thread: {}", i);
+    //     thread::sleep(Duration::from_millis(1));
+    // }
+
+    // thread1.join().unwrap();
+
+    pub struct Bank {
+        balance: f32
+    }
+    // Error to fix with a smart pointer
+    // fn withdraw(the_bank: &mut Bank, amt: f32) {
+    //     the_bank.balance-=amt;
+    // }
+    // let mut bank = Bank{balance: 100.0};
+    // withdraw(&mut bank, 5.00);
+    // println!("Balance: {}", bank.balance);
+
+    // fn customer(the_bank: &mut Bank) {
+    //     withdraw(the_bank, 5.00)
+    // }
+    // thread::spawn(|| {
+    //     customer(&mut bank)
+    // }).join().unwrap();
+
+    fn withdraw(the_bank: &Arc<Mutex<Bank>>, amt: f32){
+        let mut bank_ref = the_bank.lock().unwrap();
+        if bank_ref.balance < 5.00 {
+            println!("Current balance: {} Withdraw a smaller amount ", bank_ref.balance);
+        } else {
+            bank_ref.balance -= amt;
+            println!("Customer withdrew {} Current balance {}", amt, bank_ref.balance);
+        }
+    }
+    fn customer(the_bank: Arc<Mutex<Bank>>) {
+        withdraw(&the_bank, 5.00);
+    }
+    let bank: Arc<Mutex<Bank>> = Arc::new(Mutex::new(Bank {balance: 20.00}));
+    let handles = (0..10).map(|_| {
+        let bank_ref = bank.clone();
+        thread::spawn(|| {
+            customer(bank_ref);
+        }) 
+    });
+    for handle in handles {
+        handle.join().unwrap();
+    }
+    println!("Total: {}", bank.lock().unwrap().balance);
 }
