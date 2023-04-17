@@ -1,13 +1,31 @@
+#[allow(unused)]
+
 fn main() {
-    println!("{}", alphabet_position("The sunset sets at twelve o' clock."))
+    println!("{}", grow(vec![1, 2, 3, 4, 5]))
 }
  
+fn grow(nums: Vec<i32>) -> i32 {
+    nums.iter().fold(1, |acc, elm| acc * elm)
+}
+
+fn is_square(n: i64) -> bool {
+    let sqr = (n as f64).sqrt();
+    sqr % 1.0 == 0.0
+}
+
+fn count_by(x: u32, n: u32) -> Vec<u32> {
+    let mut nums: Vec<u32> = Vec::new();
+    for i in 0..n{ 
+        if i * x % x == 0 {
+            nums.push(i*x)
+        }
+    }
+    nums
+}
+
 // checks if a string end with the other string that is passed
 fn solution(word: &str, ending: &str) -> bool {
-    if word.ends_with(ending) {
-        return true;
-    }
-    false
+    word.ends_with(ending) 
 }
 
 // squares every digit of a given number a return a number that is the 
