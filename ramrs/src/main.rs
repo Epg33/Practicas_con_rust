@@ -1,3 +1,8 @@
+extern crate sys_info;
+extern crate termion;
+mod memory;
+use crate::memory::show_free_memory;
+
 fn main() {
-    println!("Hello, world!");
+    show_free_memory();
 }
