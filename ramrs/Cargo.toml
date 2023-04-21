@@ -7,5 +7,6 @@ edition = "2021"
 
 [dependencies]
 clap = { version = "4.2.4", features = ["derive"] }
+sys = "0.0.0"
 sys-info = "0.9.1"
 termion = "2.0.1"
