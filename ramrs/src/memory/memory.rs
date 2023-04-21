@@ -1,7 +1,7 @@
-mod memory {
+pub mod memory {
   use std::io::{stdout, Write};
   use sys_info::mem_info;
-  use sysinfo::{System, SystemExt, DiskExt, NetworkExt};
+  use sysinfo::{System, SystemExt, DiskExt, NetworkExt, ProcessExt};
   use termion::clear;
 
   pub fn show_free_memory() {
@@ -22,21 +22,20 @@ mod memory {
   }
 
   pub fn show_networks() {
-    let mut sys = System::new_all();
+    let sys = System::new_all();
     for (interface_name, data) in sys.networks() {
       println!("{}: {}/{} B", interface_name, data.received(), data.transmitted());
+    }
   }
+
+  pub fn show_processes() {
+    let sys = System::new_all();
+    for (pid, process) in sys.processes() {
+      if process.name()=="code" {
+        println!("{}", process.name());
+        // process.kill();
+      }
+      // println!("[{}] {} {:?}", pid, process.name(), process.disk_usage());
+    }
   }
-}
-
-pub fn show_free_memory() {
-  crate::memory::memory::show_free_memory();
-}
-
-pub fn show_disk() {
-  crate::memory::memory::show_disk();
-}
-
-pub fn show_networks() {
-  crate::memory::memory::show_networks();
 }
