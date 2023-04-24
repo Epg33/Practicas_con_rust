@@ -3,8 +3,9 @@ extern crate termion;
 mod memory;
 mod terminal;
 use crate::memory::memory::memory::show_processes;
+use crate::terminal::terminal::terminal::show_principal_menu;
 // use crate::terminal::show_options;
 
 fn main() {
-    show_processes();
+    show_principal_menu();
 }
