@@ -5,10 +5,9 @@ pub mod memory {
   use termion::clear;
 
   pub fn show_free_memory() {
-    let mut stdout = stdout();
     loop {
         let mem = mem_info().unwrap();
-        write!(stdout, "{}", clear::All).unwrap();  
+        write!(stdout(), "{}", clear::All).unwrap();  
         println!("{} free bytes", mem.free); 
     }
   }
