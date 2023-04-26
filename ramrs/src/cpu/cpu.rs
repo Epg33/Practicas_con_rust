@@ -18,17 +18,15 @@ pub mod cpu {
   }
   pub fn show_system_info() {
     let sys = System::new_all();
+    print!("\x1B[2J\x1B[1;1H");
     println!("----------------------System Info----------------------");
-    println!("System Name: {:?}", sys.name());
+    println!("System Name: {}", sys.name().unwrap());
     println!("System Kernel Version: {:?}", sys.kernel_version());
     println!("System OS Version: {:?}", sys.os_version());
     println!("System Host Name: {:?}", sys.host_name());
-    for user in sys.users() {
-      println!("{} is in {} groups", user.name(), user.groups().len());
+    for component in sys.components() {
+      println!("{:?}", component);
     }
-    // for component in sys.components() {
-    //   println!("{}", component);
-    // }
     let menu = menu(vec![
       button("Go Back")
     ]);
