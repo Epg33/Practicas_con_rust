@@ -1,11 +1,12 @@
 pub mod terminal {
-  use terminal_menu::{menu, run, label, button, mut_menu};
-  use crate::cpu::cpu::cpu::show_cpu_usage;
+  use terminal_menu::{menu, run, button, mut_menu};
+  use crate::cpu::cpu::cpu::{show_cpu_usage, show_system_info};
   pub fn show_principal_menu() {
     let menu = menu(vec![
       button("Disk"),
       button("Ram"),
-      button("Cpu")
+      button("Cpu"),
+      button("System Info")
     ]);
     run(&menu);
     let mutmen = mut_menu(&menu);
@@ -13,6 +14,7 @@ pub mod terminal {
         "Disk" => show_disk_options(),
         "Ram" => println!("Show Ram options"),
         "Cpu" => show_cpu_options(),
+        "System Info" => show_system_info(),
         &_ => println!("Select a valid option")
     }
   }
