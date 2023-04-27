@@ -1,5 +1,5 @@
 pub mod memory {
-  use sysinfo::{System, SystemExt, DiskExt, NetworkExt, ProcessExt};
+  use sysinfo::{System, SystemExt, DiskExt, NetworkExt};
 
   pub fn show_disk() {
     let mut sys = System::new_all();
