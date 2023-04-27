@@ -23,7 +23,7 @@ pub mod terminal {
     }
   }
 
-  fn show_ram_options() {
+  pub fn show_ram_options() {
     print!("\x1B[2J\x1B[1;1H");
     let menu = menu(vec![
       button("Show processes"),
@@ -42,7 +42,7 @@ pub mod terminal {
     }
   }
 
-  fn show_disk_options() {
+  pub fn show_disk_options() {
     print!("\x1B[2J\x1B[1;1H");
     let menu = menu(vec![
       button("Disk usage"),
@@ -61,12 +61,11 @@ pub mod terminal {
     }
   }
 
-  fn show_cpu_options () {
+  pub fn show_cpu_options () {
     print!("\x1B[2J\x1B[1;1H");
     let menu = menu(vec![
       button("show cpus usage"),
       button("show networks"),
-      button("show processes"),
       button("Go Back"),
       button("Close")
     ]);
@@ -75,14 +74,28 @@ pub mod terminal {
     match mutmen.selected_item_name() {
       "show cpus usage" => show_cpu_usage(),
       "show networks" => show_networks(),
-      "show processes" => show_processes(),
       "Go Back" => show_principal_menu(),
       "Close" => end_terminal(),
       &_ => {println!("Select a valid option"); show_cpu_options()}
     }
   }
+
   fn end_terminal() {
     use std::process;
     process::exit(0)
+  }
+
+  pub fn go_back(terminal_stage: fn()) {
+    let menu = menu(vec![
+      button("Go Back"),
+      button("Close")
+    ]);
+    run(&menu);
+    let mutmen = mut_menu(&menu);
+    match mutmen.selected_item_name() {
+      "Go Back" => terminal_stage(),
+      "Close" => end_terminal(),
+      &_ => println!("Select a valid option")
+    }
   }
 }
