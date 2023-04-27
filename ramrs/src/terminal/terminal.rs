@@ -1,6 +1,7 @@
 pub mod terminal {
+  use crate::ram::ram::ram::{show_processes, show_free_memory};
   use terminal_menu::{menu, run, button, mut_menu};
-  use crate::{cpu::cpu::cpu::{show_cpu_usage, show_system_info}, memory::memory::memory::{show_disk, show_networks, show_processes}};
+  use crate::{cpu::cpu::cpu::{show_cpu_usage, show_system_info}, memory::memory::memory::{show_disk, show_networks}};
   pub fn show_principal_menu() {
     print!("\x1B[2J\x1B[1;1H");
     let menu = menu(vec![
@@ -14,7 +15,7 @@ pub mod terminal {
     let mutmen = mut_menu(&menu);
     match mutmen.selected_item_name() {
         "Disks" => show_disk_options(),
-        "Ram" => println!("Show Ram options"),
+        "Ram" => show_ram_options(),
         "Cpu" => show_cpu_options(),
         "System Info" => show_system_info(),
         "Close" => end_terminal(),
@@ -22,12 +23,32 @@ pub mod terminal {
     }
   }
 
-  pub fn show_disk_options() {
+  fn show_ram_options() {
+    print!("\x1B[2J\x1B[1;1H");
+    let menu = menu(vec![
+      button("Show processes"),
+      button("Show free memory"),
+      button("Go Back"),
+      button("Close")
+    ]);
+    run(&menu);
+    let mutmen = mut_menu(&menu);
+    match mutmen.selected_item_name() {
+        "Show processes" => show_processes(),
+        "Show free memory" => show_free_memory(),
+        "Go Back" => show_principal_menu(),
+        "Close" => end_terminal(),
+        &_ => println!("Select a valid option")
+    }
+  }
+
+  fn show_disk_options() {
     print!("\x1B[2J\x1B[1;1H");
     let menu = menu(vec![
       button("Disk usage"),
       button("Dirs"),
-      button("Go Back")
+      button("Go Back"),
+      button("Close")
     ]);
     run(&menu);
     let mutmen = mut_menu(&menu);
@@ -35,17 +56,19 @@ pub mod terminal {
         "Disk usage" => show_disk(),
         "Dirs" => println!("Show Directories and options"),
         "Go Back" => show_principal_menu(),
+        "Close" => end_terminal(),
         &_ => println!("Select a valid option")
     }
   }
 
-  pub fn show_cpu_options () {
+  fn show_cpu_options () {
     print!("\x1B[2J\x1B[1;1H");
     let menu = menu(vec![
       button("show cpus usage"),
       button("show networks"),
       button("show processes"),
-      button("Go Back")
+      button("Go Back"),
+      button("Close")
     ]);
     run(&menu);
     let mutmen = mut_menu(&menu);
@@ -54,6 +77,7 @@ pub mod terminal {
       "show networks" => show_networks(),
       "show processes" => show_processes(),
       "Go Back" => show_principal_menu(),
+      "Close" => end_terminal(),
       &_ => {println!("Select a valid option"); show_cpu_options()}
     }
   }

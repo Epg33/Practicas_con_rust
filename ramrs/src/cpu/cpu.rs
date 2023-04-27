@@ -1,6 +1,6 @@
 pub mod cpu {
   use terminal_menu::{menu, run, button, mut_menu};
-  use sysinfo::{System, SystemExt, CpuExt, UserExt};
+  use sysinfo::{System, SystemExt, CpuExt};
   use crate::terminal::terminal::terminal::show_principal_menu;
   pub fn show_cpu_usage() {
     let mut sys = System::new_all();
@@ -8,7 +8,7 @@ pub mod cpu {
       sys.refresh_cpu();
       print!("\x1B[2J\x1B[1;1H"); 
       for cpu in sys.cpus() {
-        println!("----------------{}----------------", cpu.name());
+        println!("----------------{}, {}----------------", cpu.name(), cpu.brand());
         println!("INFO:");
         println!("Is using: {}%",cpu.cpu_usage().round());
         println!("It has a {}MHz frequency", cpu.frequency());
