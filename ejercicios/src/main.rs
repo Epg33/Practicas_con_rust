@@ -1,7 +1,18 @@
+use std::collections::HashSet;
+
 #[allow(unused)]
 
 fn main() {
     println!("{}", grow(vec![1, 2, 3, 4, 5]))
+}
+
+fn contains_duplicate(nums: Vec<i32>) -> bool {
+    let dep: HashSet<&i32> = nums.iter().collect();
+    return dep.len() != nums.len()
+}
+
+fn maximum_wealth(accounts: Vec<Vec<i32>>) -> i32 {
+    return accounts.iter().map(|acc| acc.iter().sum()).max().unwrap()
 }
  
 fn grow(nums: Vec<i32>) -> i32 {
