@@ -6,6 +6,19 @@ fn main() {
     println!("{}", grow(vec![1, 2, 3, 4, 5]))
 }
 
+fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
+    let mut result: Vec<i32> = vec!(0, 0);
+    for i in nums.iter() {
+       for j in nums.iter() {
+            if i + j == target {
+                result = vec!(i.clone(), j.clone())
+            }
+       } 
+    }
+
+    return result
+} 
+
 fn contains_duplicate(nums: Vec<i32>) -> bool {
     let dep: HashSet<&i32> = nums.iter().collect();
     return dep.len() != nums.len()
