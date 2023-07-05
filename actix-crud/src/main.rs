@@ -2,10 +2,11 @@ mod routes;
 mod db;
 use dotenv::dotenv;
 
-fn main() {
+#[tokio::main]
+async fn main() {
     dotenv().ok();
     routes::routes::routes::hello();
-    connect();
+    connect().await;
     println!("Hello, world!");
 }
 

@@ -1,11 +1,27 @@
 use std::collections::HashSet;
 
-#[allow(unused)]
-
 fn main() {
     println!("{}", grow(vec![1, 2, 3, 4, 5]))
 }
 
+#[allow(unused)]
+fn parse(code: &str) -> Vec<i32> {
+    let mut count:i32 = 0;
+    let mut result: Vec<i32> = vec!();
+    for i in code.chars().into_iter() {
+        match i {
+            'i' => count += 1,
+            'd' => count -= 1,
+            's' => count *= count,
+            'o' => {result.push(count); ()},
+            _ => ()
+        }
+    }
+
+    result
+}
+
+#[allow(unused)]
 fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
     let mut result: Vec<i32> = vec!(0, 0);
     for i in nums.iter() {
@@ -19,24 +35,29 @@ fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
     return result
 } 
 
+#[allow(unused)]
 fn contains_duplicate(nums: Vec<i32>) -> bool {
     let dep: HashSet<&i32> = nums.iter().collect();
     return dep.len() != nums.len()
 }
 
+#[allow(unused)]
 fn maximum_wealth(accounts: Vec<Vec<i32>>) -> i32 {
     return accounts.iter().map(|acc| acc.iter().sum()).max().unwrap()
 }
  
+#[allow(unused)]
 fn grow(nums: Vec<i32>) -> i32 {
     nums.iter().fold(1, |acc, elm| acc * elm)
 }
 
+#[allow(unused)]
 fn is_square(n: i64) -> bool {
     let sqr = (n as f64).sqrt();
     sqr % 1.0 == 0.0
 }
 
+#[allow(unused)]
 fn count_by(x: u32, n: u32) -> Vec<u32> {
     let mut nums: Vec<u32> = Vec::new();
     for i in 0..n{ 
@@ -47,11 +68,13 @@ fn count_by(x: u32, n: u32) -> Vec<u32> {
     nums
 }
 
+#[allow(unused)]
 // checks if a string end with the other string that is passed
 fn solution(word: &str, ending: &str) -> bool {
     word.ends_with(ending) 
 }
 
+#[allow(unused)]
 // squares every digit of a given number a return a number that is the 
 // concatenation of all theese numbers
 fn square_digits(num: u64) -> u64 {
@@ -64,6 +87,7 @@ fn square_digits(num: u64) -> u64 {
     return string_for_num.parse::<u64>().expect("expected an unsigned number of 64 bits");
 }
 
+#[allow(unused)]
 // takes a string and returns a string with the position in the alphabet of every char from 
 // the first string
 fn alphabet_position(text: &str) -> String {
