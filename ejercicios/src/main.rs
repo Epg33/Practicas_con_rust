@@ -1,7 +1,25 @@
-use std::collections::HashSet;
+use std::{collections::HashSet, time::{Instant, Duration}};
 
 fn main() {
-    println!("{}", grow(vec![1, 2, 3, 4, 5]))
+    let start_time = Instant::now();
+    let test = multiplication_table(10000);
+    let end_time = Instant::now();
+    let duration: Duration = end_time - start_time;
+    println!("tiempo en ejecucion: {:?}", duration)
+}
+
+fn multiplication_table(len: usize) -> Vec<Vec<usize>> {
+    //let result: Vec<Vec<usize>> = (0..len).map(|i| (0..len).map(|j| (i+1)*(j+1)).collect()).collect();  
+    //result
+        let mut result: Vec<Vec<usize>> = Vec::with_capacity(len);
+    for i in 0..len {
+        let mut row: Vec<usize> = Vec::with_capacity(len);
+        for j in 0..len {
+            row.push(i * j);
+        }
+        result.push(row);
+    }
+    result
 }
 
 #[allow(unused)]
