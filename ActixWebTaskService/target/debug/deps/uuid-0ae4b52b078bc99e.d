@@ -1,0 +1,13 @@
+/home/ethiem/codigo/Practicas_con_rust/ActixWebTaskService/target/debug/deps/uuid-0ae4b52b078bc99e.rmeta: /home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/lib.rs /home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/builder/mod.rs /home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/builder/error.rs /home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/error.rs /home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/parser/mod.rs /home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/parser/error.rs /home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/prelude.rs /home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/adapter/mod.rs /home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/v4.rs
+
+/home/ethiem/codigo/Practicas_con_rust/ActixWebTaskService/target/debug/deps/uuid-0ae4b52b078bc99e.d: /home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/lib.rs /home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/builder/mod.rs /home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/builder/error.rs /home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/error.rs /home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/parser/mod.rs /home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/parser/error.rs /home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/prelude.rs /home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/adapter/mod.rs /home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/v4.rs
+
+/home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/lib.rs:
+/home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/builder/mod.rs:
+/home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/builder/error.rs:
+/home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/error.rs:
+/home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/parser/mod.rs:
+/home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/parser/error.rs:
+/home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/prelude.rs:
+/home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/adapter/mod.rs:
+/home/ethiem/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-0.8.2/src/v4.rs:
